@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 class Solution {
 public:
     vector<string> uncommonFromSentences(string s1, string s2) {
@@ -15,7 +14,6 @@ public:
         };
         addWords(s1);
         addWords(s2);
-
         for (const auto& [word, count] : wordCount) {
             if (count == 1) {
                 result.push_back(word);
