@@ -1,0 +1,40 @@
+bool isPalindrome(Node *head) {
+        if (!head || !head->next) {
+        return true; // A list with 0 or 1 node is a palindrome
+    }
+
+    // Step 1: Find the middle of the linked list
+    Node *slow = head;
+    Node *fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;        // Move slow by 1
+        fast = fast->next->next;  // Move fast by 2
+    }
+
+    // Step 2: Reverse the second half of the list
+    Node *prev = nullptr;
+    Node *curr = slow;
+    while (curr != nullptr) {
+        Node *nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+
+    // Now, prev points to the head of the reversed second half
+
+    // Step 3: Compare the first half with the reversed second half
+    Node *firstHalf = head;
+    Node *secondHalf = prev;
+
+    while (secondHalf != nullptr) {
+        if (firstHalf->data != secondHalf->data) {
+            return false; // Not a palindrome
+        }
+        firstHalf = firstHalf->next;
+        secondHalf = secondHalf->next;
+    }
+
+    return true; // 
+    }
