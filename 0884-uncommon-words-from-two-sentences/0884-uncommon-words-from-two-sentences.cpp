@@ -12,6 +12,7 @@ public:
                 wordCount[word]++;
             }
         };
+        
         addWords(s1);
         addWords(s2);
         for (const auto& [word, count] : wordCount) {
