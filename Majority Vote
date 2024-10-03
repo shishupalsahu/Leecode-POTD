@@ -1,0 +1,12 @@
+        unordered_map<int ,int>m;
+        for(auto &i:nums)
+            m[i]++;
+        vector<int>ans;
+        int n=nums.size();
+        for(auto &i:m)
+            if(i.second>n/3)
+                ans.emplace_back(i.first);
+        sort(ans.begin(),ans.end());
+        if(ans.size()==0)
+            ans.emplace_back(-1);
+        return ans;      
