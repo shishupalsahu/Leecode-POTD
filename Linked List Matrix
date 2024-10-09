@@ -1,0 +1,22 @@
+ Node* constructLinkedMatrix(vector<vector<int>>& mat) {
+        int n=mat.size();
+        int m=mat[0].size();
+       vector<vector<Node*>> nodeMatrix(n, vector<Node*>(m, nullptr));
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            nodeMatrix[i][j] = new Node(mat[i][j]); 
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (j + 1 < m) {
+                nodeMatrix[i][j]->right = nodeMatrix[i][j + 1]; // Set right neighbor
+            }
+            if (i + 1 < n) {
+                nodeMatrix[i][j]->down = nodeMatrix[i + 1][j]; // Set down neighbor
+            }
+        }
+    }
+        return nodeMatrix[0][0];
+    }
